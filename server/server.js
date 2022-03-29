@@ -18,11 +18,21 @@ app.post('/api/addNeed/', (req, res) => {
     let needed_quantity = req.body.needed_quantity;
 
 
-    mySqldb.query("INSERT INTO needed_supplies (needed_item_name, need_description, collection_status, needed_quantity) VALUES (?,?,?,?)",[needed_item_name,need_description,collection_status, needed_quantity], (err,result)=>{
-        if(err) {
+    mySqldb.query("INSERT INTO needed_supplies (needed_item_name, need_description, collection_status, needed_quantity) VALUES (?,?,?,?)", [needed_item_name, need_description, collection_status, needed_quantity], (err, result) => {
+        if (err) {
             console.log(err)
         }
         console.log(result)
     });
+});
 
+app.get('/api/getNeeded/', (req, res) => {
+
+    mySqldb.query("SELECT * FROM needed_supplies", (err, result) => {
+        if (err) {
+            console.log(err)
+        }
+
+        res.send(result)
+    });
 });

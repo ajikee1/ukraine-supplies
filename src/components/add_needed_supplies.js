@@ -1,7 +1,5 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
-
-import logo from './images/logo.png';
 import './css/form.css';
 import axios from "axios";
 
